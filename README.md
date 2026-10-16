@@ -253,6 +253,7 @@ flowchart LR
 | 256 | **1.0000** | 1.0000 | 1,349 | 1,974 | 694 µs | 1,269 µs |
 
 ```mermaid
+%%{init: {"themeVariables": {"xyChart": {"plotColorPalette": "#16a34a, #f59e0b"}}}}%%
 xychart-beta
     title "Single-thread QPS vs efSearch (lowrank, 100k × 128-d)"
     x-axis "efSearch" [10, 16, 32, 64, 128, 256]
@@ -260,7 +261,7 @@ xychart-beta
     bar [12470, 9366, 5485, 3571, 2400, 1349]
     line [11922, 10999, 7886, 3809, 2827, 1974]
 ```
-<sub>🟦 bars: VectorDB · line: FAISS IndexHNSWFlat, single-query mode. Both engines on the same host.</sub>
+<sub>🟩 bars: VectorDB · 🟧 line: FAISS IndexHNSWFlat, single-query mode. Both engines on the same host.</sub>
 
 ### Everything else at a glance
 

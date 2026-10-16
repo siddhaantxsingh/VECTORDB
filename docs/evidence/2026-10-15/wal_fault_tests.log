@@ -1,0 +1,10 @@
+ 23:17:51 up 26 min,  0 user,  load average: 16.16, 22.27, 23.65
+append of id 13 failed with: io: File too large (os error 27)
+test efbig_during_append_loses_no_acknowledged_write ... ok
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+after restart: unacknowledged record 100 present = true
+test failed_rollback_after_fsync_error_poisons_until_restart ... ok
+test fsync_failure_rolls_back_the_record ... ok
+test short_write_failure_rolls_back_the_fragment ... ok
+test failed_rollback_after_short_write_is_repaired_on_restart ... ok
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s

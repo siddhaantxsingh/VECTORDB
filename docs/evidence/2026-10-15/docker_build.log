@@ -1,0 +1,32 @@
+Fri Oct 16 06:49:31 UTC 2026
+ 06:49:31 up 30 min,  0 user,  load average: 0.70, 0.80, 1.90
+/dev/vda        252G   35G  4.3G  90% /
+base images: rust:1.89-slim from docker.io; debian:bookworm-slim from mirror.gcr.io (Docker Hub returned 429), image id sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587
+#11 [build 5/6] COPY src ./src
+#11 CACHED
+
+#12 [stage-1 2/3] RUN useradd --create-home --uid 10001 vdb && mkdir /data && chown vdb /data
+#12 DONE 0.2s
+
+#13 [build 6/6] RUN --mount=type=secret,id=ca,required=false     if [ -s /run/secrets/ca ]; then export CARGO_HTTP_CAINFO=/run/secrets/ca; fi;     cargo build --locked --release --bin vectordb
+#13 0.205     Updating crates.io index
+#13 88.11     Finished `release` profile [optimized + debuginfo] target(s) in 1m 27s
+#13 DONE 88.5s
+
+#14 [stage-1 3/3] COPY --from=build /src/target/release/vectordb /usr/local/bin/vectordb
+#14 DONE 0.1s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 1.6s done
+#15 exporting manifest sha256:c3cec9befe05dc1c44a5b5a2f691ecfcc9fea2c2db5747f72f203fbdcee8b77f done
+#15 exporting config sha256:7fec0d6672249f9087aa575f199019f8421cbbdc6df9a00b554b0672d475fced done
+#15 exporting attestation manifest sha256:16c301059d1a2d0fe5f42f197b81aa66b8dcdd82df94df927929ef7e4c898b9f 0.0s done
+#15 exporting manifest list sha256:0a66f91d35be09d0efa920ffeebb59c5cfaaeb9564a3d876e45dd1934f17d708 0.0s done
+#15 naming to docker.io/library/vectordb:smoke done
+#15 unpacking to docker.io/library/vectordb:smoke
+#15 unpacking to docker.io/library/vectordb:smoke 0.5s done
+#15 DONE 2.2s
+docker build exit: 0; wall time: 92 s
+IMAGE            ID             DISK USAGE   CONTENT SIZE   EXTRA
+vectordb:smoke   0a66f91d35be        156MB         36.9MB        

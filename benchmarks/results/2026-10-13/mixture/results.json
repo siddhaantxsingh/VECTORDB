@@ -1,0 +1,178 @@
+{
+  "build": {
+    "hnsw_max_level": 4,
+    "inserts_per_sec": 1890.0,
+    "seconds": 52.92
+  },
+  "durability": {
+    "data_dir_bytes": 65165190,
+    "recover_from_snapshot_seconds": 0.319,
+    "recover_from_wal_records": 10000,
+    "recover_from_wal_seconds": 2.199,
+    "results_identical_after_recovery": true,
+    "snapshot_bytes": 65165098,
+    "snapshot_seconds": 0.927
+  },
+  "exact": {
+    "p50_us": 8064.0,
+    "p95_us": 10932.0,
+    "p99_us": 11977.0,
+    "qps": 235.0,
+    "recall_at_10": 1.0
+  },
+  "filtered_ef64_threads_1": [
+    {
+      "p50_us": 866.0,
+      "p95_us": 1082.0,
+      "p99_us": 1280.0,
+      "plan": "hnsw-filtered ef=124 (selectivity≈0.520)",
+      "qps": 1138.0,
+      "recall_at_10": 0.9998,
+      "selectivity": "50%"
+    },
+    {
+      "p50_us": 12649.0,
+      "p95_us": 18897.0,
+      "p99_us": 22486.0,
+      "plan": "hnsw-filtered ef=596 (selectivity≈0.107)",
+      "qps": 75.0,
+      "recall_at_10": 1.0,
+      "selectivity": "10%"
+    },
+    {
+      "p50_us": 17471.0,
+      "p95_us": 29407.0,
+      "p99_us": 32871.0,
+      "plan": "exact-filter-fallback (selectivity≈0.010)",
+      "qps": 53.0,
+      "recall_at_10": 1.0,
+      "selectivity": "1%"
+    }
+  ],
+  "hnsw": [
+    {
+      "ef": 10,
+      "threads_1": {
+        "p50_us": 112.0,
+        "p95_us": 189.0,
+        "p99_us": 248.0,
+        "qps": 8020.0,
+        "recall_at_10": 0.6415
+      },
+      "threads_2": {
+        "p50_us": 139.0,
+        "p95_us": 214.0,
+        "p99_us": 270.0,
+        "qps": 13199.0,
+        "recall_at_10": 0.6415
+      }
+    },
+    {
+      "ef": 16,
+      "threads_1": {
+        "p50_us": 206.0,
+        "p95_us": 286.0,
+        "p99_us": 344.0,
+        "qps": 4801.0,
+        "recall_at_10": 0.7515
+      },
+      "threads_2": {
+        "p50_us": 195.0,
+        "p95_us": 291.0,
+        "p99_us": 364.0,
+        "qps": 9542.0,
+        "recall_at_10": 0.7515
+      }
+    },
+    {
+      "ef": 32,
+      "threads_1": {
+        "p50_us": 202.0,
+        "p95_us": 332.0,
+        "p99_us": 392.0,
+        "qps": 4476.0,
+        "recall_at_10": 0.8947
+      },
+      "threads_2": {
+        "p50_us": 260.0,
+        "p95_us": 386.0,
+        "p99_us": 460.0,
+        "qps": 6921.0,
+        "recall_at_10": 0.8947
+      }
+    },
+    {
+      "ef": 64,
+      "threads_1": {
+        "p50_us": 371.0,
+        "p95_us": 593.0,
+        "p99_us": 776.0,
+        "qps": 2504.0,
+        "recall_at_10": 0.9744
+      },
+      "threads_2": {
+        "p50_us": 336.0,
+        "p95_us": 470.0,
+        "p99_us": 739.0,
+        "qps": 5349.0,
+        "recall_at_10": 0.9744
+      }
+    },
+    {
+      "ef": 128,
+      "threads_1": {
+        "p50_us": 512.0,
+        "p95_us": 851.0,
+        "p99_us": 1288.0,
+        "qps": 1734.0,
+        "recall_at_10": 0.9966
+      },
+      "threads_2": {
+        "p50_us": 537.0,
+        "p95_us": 818.0,
+        "p99_us": 977.0,
+        "qps": 2960.0,
+        "recall_at_10": 0.9966
+      }
+    },
+    {
+      "ef": 256,
+      "threads_1": {
+        "p50_us": 749.0,
+        "p95_us": 1114.0,
+        "p99_us": 1515.0,
+        "qps": 1238.0,
+        "recall_at_10": 1.0
+      },
+      "threads_2": {
+        "p50_us": 732.0,
+        "p95_us": 1029.0,
+        "p99_us": 1234.0,
+        "qps": 2456.0,
+        "recall_at_10": 1.0
+      }
+    }
+  ],
+  "memory": {
+    "graph_bytes": 22575688,
+    "graph_bytes_per_vector": 225,
+    "rss_before_build_bytes": 59002880,
+    "rss_bytes": 202731520,
+    "vector_bytes": 51200000,
+    "wal_bytes": 55790008
+  },
+  "setup": {
+    "cpus": 4,
+    "dataset": "mixture",
+    "dataset_description": "mixture of 64 Gaussians in the full space, centres N(0,1), spread 0.35",
+    "dim": 128,
+    "ef_construction": 200,
+    "kernel": "avx2+fma",
+    "m": 16,
+    "metric": "l2",
+    "n": 100000,
+    "queries": 1000,
+    "seed": 7,
+    "wal_sync": "never"
+  }
+}

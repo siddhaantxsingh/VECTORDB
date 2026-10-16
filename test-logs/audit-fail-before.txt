@@ -1,0 +1,227 @@
+ --> tests/audit.rs:4:55
+  |
+4 | use vectordb::collection::{Collection, Config, Error, Mode, SearchRequest};
+  |                                                       ^^^^  ^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+    Finished `release` profile [optimized + debuginfo] target(s) in 1.40s
+     Running tests/audit.rs (target/release/deps/audit-f0095f28fa817332)
+
+running 5 tests
+test cosine_accepts_large_finite_vectors ... FAILED
+test drop_racing_create_does_not_lose_a_live_collection ... FAILED
+test mid_log_length_corruption_is_not_silent_loss ... FAILED
+test train_pq_max_train_zero_is_an_error_not_a_panic ... FAILED
+test stats_concurrent_with_upserts_does_not_deadlock ... FAILED
+
+failures:
+
+---- cosine_accepts_large_finite_vectors stdout ----
+
+thread 'cosine_accepts_large_finite_vectors' (17356) panicked at tests/audit.rs:81:38:
+finite non-zero vector rejected: Invalid(ZeroVector)
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/std/src/panicking.rs:689:5
+   1: core::panicking::panic_fmt
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/panicking.rs:80:14
+   2: core::result::unwrap_failed
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/result.rs:1867:5
+   3: <core::result::Result<u64, vectordb::collection::Error>>::expect
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/result.rs:1185:23
+   4: audit::cosine_accepts_large_finite_vectors
+             at ./tests/audit.rs:81:38
+   5: audit::cosine_accepts_large_finite_vectors::{closure#0}
+             at ./tests/audit.rs:78:41
+   6: <audit::cosine_accepts_large_finite_vectors::{closure#0} as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/ops/function.rs:250:5
+   7: <fn() -> core::result::Result<(), alloc::string::String> as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/ops/function.rs:250:5
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- drop_racing_create_does_not_lose_a_live_collection stdout ----
+
+thread 'drop_racing_create_does_not_lose_a_live_collection' (17357) panicked at tests/audit.rs:117:17:
+iteration 0: collection 'x' is registered and accepts writes, but its directory was deleted
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/std/src/panicking.rs:689:5
+   1: core::panicking::panic_fmt
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/panicking.rs:80:14
+   2: audit::drop_racing_create_does_not_lose_a_live_collection
+             at ./tests/audit.rs:117:17
+   3: audit::drop_racing_create_does_not_lose_a_live_collection::{closure#0}
+             at ./tests/audit.rs:90:56
+   4: <audit::drop_racing_create_does_not_lose_a_live_collection::{closure#0} as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/ops/function.rs:250:5
+   5: <fn() -> core::result::Result<(), alloc::string::String> as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/ops/function.rs:250:5
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- mid_log_length_corruption_is_not_silent_loss stdout ----
+
+thread 'mid_log_length_corruption_is_not_silent_loss' (17358) panicked at tests/audit.rs:58:18:
+open succeeded with 0 of 10 acknowledged points; 490 bytes silently truncated
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/std/src/panicking.rs:689:5
+   1: core::panicking::panic_fmt
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/panicking.rs:80:14
+   2: audit::mid_log_length_corruption_is_not_silent_loss
+             at ./tests/audit.rs:58:18
+   3: audit::mid_log_length_corruption_is_not_silent_loss::{closure#0}
+             at ./tests/audit.rs:44:50
+   4: <audit::mid_log_length_corruption_is_not_silent_loss::{closure#0} as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/ops/function.rs:250:5
+   5: <fn() -> core::result::Result<(), alloc::string::String> as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/ops/function.rs:250:5
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- train_pq_max_train_zero_is_an_error_not_a_panic stdout ----
+
+thread 'train_pq_max_train_zero_is_an_error_not_a_panic' (17364) panicked at /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rand-0.8.8/src/rng.rs:134:9:
+cannot sample empty range
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/std/src/panicking.rs:689:5
+   1: core::panicking::panic_fmt
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/panicking.rs:80:14
+   2: core::panicking::panic
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/panicking.rs:150:5
+   3: <rand::rngs::small::SmallRng as rand::rng::Rng>::gen_range::<usize, core::ops::range::Range<usize>>
+             at /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rand-0.8.8/src/rng.rs:134:9
+   4: vectordb::pq::kmeans
+             at ./src/pq.rs:36:36
+   5: <vectordb::pq::Pq>::train
+             at ./src/pq.rs:134:30
+   6: <vectordb::collection::Collection>::train_pq
+             at ./src/collection.rs:347:22
+   7: audit::train_pq_max_train_zero_is_an_error_not_a_panic::{closure#0}
+             at ./tests/audit.rs:71:74
+   8: <audit::train_pq_max_train_zero_is_an_error_not_a_panic::{closure#0} as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/ops/function.rs:250:5
+   9: <core::panic::unwind_safe::AssertUnwindSafe<audit::train_pq_max_train_zero_is_an_error_not_a_panic::{closure#0}> as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/panic/unwind_safe.rs:275:9
+  10: std::panicking::catch_unwind::do_call::<core::panic::unwind_safe::AssertUnwindSafe<audit::train_pq_max_train_zero_is_an_error_not_a_panic::{closure#0}>, core::result::Result<(), vectordb::collection::Error>>
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/std/src/panicking.rs:581:40
+  11: std::panicking::catch_unwind::<core::result::Result<(), vectordb::collection::Error>, core::panic::unwind_safe::AssertUnwindSafe<audit::train_pq_max_train_zero_is_an_error_not_a_panic::{closure#0}>>
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/std/src/panicking.rs:544:19
+  12: std::panic::catch_unwind::<core::panic::unwind_safe::AssertUnwindSafe<audit::train_pq_max_train_zero_is_an_error_not_a_panic::{closure#0}>, core::result::Result<(), vectordb::collection::Error>>
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/std/src/panic.rs:359:14
+  13: audit::train_pq_max_train_zero_is_an_error_not_a_panic
+             at ./tests/audit.rs:71:15
+  14: audit::train_pq_max_train_zero_is_an_error_not_a_panic::{closure#0}
+             at ./tests/audit.rs:65:53
+  15: <audit::train_pq_max_train_zero_is_an_error_not_a_panic::{closure#0} as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/ops/function.rs:250:5
+  16: <fn() -> core::result::Result<(), alloc::string::String> as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/ops/function.rs:250:5
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+thread 'train_pq_max_train_zero_is_an_error_not_a_panic' (17364) panicked at tests/audit.rs:72:5:
+train_pq(m=2, max_train=0) panicked or succeeded
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/std/src/panicking.rs:689:5
+   1: core::panicking::panic_fmt
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/panicking.rs:80:14
+   2: audit::train_pq_max_train_zero_is_an_error_not_a_panic
+             at ./tests/audit.rs:72:5
+   3: audit::train_pq_max_train_zero_is_an_error_not_a_panic::{closure#0}
+             at ./tests/audit.rs:65:53
+   4: <audit::train_pq_max_train_zero_is_an_error_not_a_panic::{closure#0} as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/ops/function.rs:250:5
+   5: <fn() -> core::result::Result<(), alloc::string::String> as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/ops/function.rs:250:5
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- stats_concurrent_with_upserts_does_not_deadlock stdout ----
+
+thread 'stats_concurrent_with_upserts_does_not_deadlock' (17359) panicked at tests/audit.rs:36:50:
+deadlock: stats() vs upsert() did not finish within 30s: Timeout
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/std/src/panicking.rs:689:5
+   1: core::panicking::panic_fmt
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/panicking.rs:80:14
+   2: core::result::unwrap_failed
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/result.rs:1867:5
+   3: <core::result::Result<(), std::sync::mpsc::RecvTimeoutError>>::expect
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/result.rs:1185:23
+   4: audit::stats_concurrent_with_upserts_does_not_deadlock
+             at ./tests/audit.rs:36:50
+   5: audit::stats_concurrent_with_upserts_does_not_deadlock::{closure#0}
+             at ./tests/audit.rs:16:53
+   6: <audit::stats_concurrent_with_upserts_does_not_deadlock::{closure#0} as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/ops/function.rs:250:5
+   7: <fn() -> core::result::Result<(), alloc::string::String> as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/ops/function.rs:250:5
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+
+failures:
+    cosine_accepts_large_finite_vectors
+    drop_racing_create_does_not_lose_a_live_collection
+    mid_log_length_corruption_is_not_silent_loss
+    stats_concurrent_with_upserts_does_not_deadlock
+    train_pq_max_train_zero_is_an_error_not_a_panic
+
+test result: FAILED. 0 passed; 5 failed; 0 ignored; 0 measured; 0 filtered out; finished in 30.01s
+
+error: test failed, to rerun pass `--test audit`
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.68s
+     Running tests/audit_pq_rerank.rs (target/release/deps/audit_pq_rerank-0da13046e5f31a94)
+
+running 1 test
+memory allocation of 87960930222088 bytes failed
+stack backtrace:
+   0: std::alloc::rust_oom
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/std/src/alloc.rs:424:5
+   1: __rustc::__rust_alloc_error_handler
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/std/src/alloc.rs:423:1
+   2: alloc::alloc::handle_alloc_error::rt_error
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/alloc/src/alloc.rs:551:13
+   3: alloc::alloc::handle_alloc_error
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/alloc/src/alloc.rs:557:9
+   4: alloc::raw_vec::handle_error
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/alloc/src/raw_vec/mod.rs:890:38
+   5: <alloc::raw_vec::RawVecInner>::with_capacity_in
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/alloc/src/raw_vec/mod.rs:442:25
+   6: <alloc::raw_vec::RawVec<<vectordb::pq::Pq>::search::C>>::with_capacity_in
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/alloc/src/raw_vec/mod.rs:177:20
+   7: <alloc::vec::Vec<<vectordb::pq::Pq>::search::C>>::with_capacity_in
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/alloc/src/vec/mod.rs:977:20
+   8: <alloc::vec::Vec<<vectordb::pq::Pq>::search::C>>::with_capacity
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/alloc/src/vec/mod.rs:524:9
+   9: <alloc::collections::binary_heap::BinaryHeap<<vectordb::pq::Pq>::search::C>>::with_capacity
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/alloc/src/collections/binary_heap/mod.rs:536:28
+  10: <vectordb::pq::Pq>::search
+             at ./src/pq.rs:214:39
+  11: <vectordb::collection::Collection>::search
+             at ./src/collection.rs:279:21
+  12: audit_pq_rerank::pq_search_huge_rerank_is_rejected::{closure#0}
+             at ./tests/audit_pq_rerank.rs:23:74
+  13: <audit_pq_rerank::pq_search_huge_rerank_is_rejected::{closure#0} as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/ops/function.rs:250:5
+  14: <core::panic::unwind_safe::AssertUnwindSafe<audit_pq_rerank::pq_search_huge_rerank_is_rejected::{closure#0}> as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/panic/unwind_safe.rs:275:9
+  15: std::panicking::catch_unwind::do_call::<core::panic::unwind_safe::AssertUnwindSafe<audit_pq_rerank::pq_search_huge_rerank_is_rejected::{closure#0}>, core::result::Result<vectordb::collection::SearchResponse, vectordb::collection::Error>>
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/std/src/panicking.rs:581:40
+  16: std::panicking::catch_unwind::<core::result::Result<vectordb::collection::SearchResponse, vectordb::collection::Error>, core::panic::unwind_safe::AssertUnwindSafe<audit_pq_rerank::pq_search_huge_rerank_is_rejected::{closure#0}>>
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/std/src/panicking.rs:544:19
+  17: std::panic::catch_unwind::<core::panic::unwind_safe::AssertUnwindSafe<audit_pq_rerank::pq_search_huge_rerank_is_rejected::{closure#0}>, core::result::Result<vectordb::collection::SearchResponse, vectordb::collection::Error>>
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/std/src/panic.rs:359:14
+  18: audit_pq_rerank::pq_search_huge_rerank_is_rejected
+             at ./tests/audit_pq_rerank.rs:23:15
+  19: audit_pq_rerank::pq_search_huge_rerank_is_rejected::{closure#0}
+             at ./tests/audit_pq_rerank.rs:15:39
+  20: <audit_pq_rerank::pq_search_huge_rerank_is_rejected::{closure#0} as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/ops/function.rs:250:5
+  21: <fn() -> core::result::Result<(), alloc::string::String> as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/2d8144b7880597b6e6d3dfd63a9a9efae3f533d3/library/core/src/ops/function.rs:250:5
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+error: test failed, to rerun pass `--test audit_pq_rerank`
+
+Caused by:
+  process didn't exit successfully: `/home/user/PROJECTS/vectordb/target/release/deps/audit_pq_rerank-0da13046e5f31a94` (signal: 6, SIGABRT: process abort signal)

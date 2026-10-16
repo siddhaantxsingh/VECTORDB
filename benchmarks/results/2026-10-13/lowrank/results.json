@@ -1,0 +1,212 @@
+{
+  "build": {
+    "hnsw_max_level": 4,
+    "inserts_per_sec": 2003.0,
+    "seconds": 49.94
+  },
+  "durability": {
+    "data_dir_bytes": 68745710,
+    "recover_from_snapshot_seconds": 0.313,
+    "recover_from_wal_records": 10000,
+    "recover_from_wal_seconds": 2.082,
+    "results_identical_after_recovery": true,
+    "snapshot_bytes": 68745618,
+    "snapshot_seconds": 0.995
+  },
+  "exact": {
+    "p50_us": 7890.0,
+    "p95_us": 11026.0,
+    "p99_us": 12242.0,
+    "qps": 237.0,
+    "recall_at_10": 1.0
+  },
+  "filtered_ef64_threads_1": [
+    {
+      "p50_us": 852.0,
+      "p95_us": 1305.0,
+      "p99_us": 1455.0,
+      "plan": "hnsw-filtered ef=124 (selectivity≈0.520)",
+      "qps": 1081.0,
+      "recall_at_10": 1.0,
+      "selectivity": "50%"
+    },
+    {
+      "p50_us": 12760.0,
+      "p95_us": 17418.0,
+      "p99_us": 20807.0,
+      "plan": "hnsw-filtered ef=596 (selectivity≈0.107)",
+      "qps": 76.0,
+      "recall_at_10": 1.0,
+      "selectivity": "10%"
+    },
+    {
+      "p50_us": 17819.0,
+      "p95_us": 32580.0,
+      "p99_us": 34571.0,
+      "plan": "exact-filter-fallback (selectivity≈0.010)",
+      "qps": 51.0,
+      "recall_at_10": 1.0,
+      "selectivity": "1%"
+    }
+  ],
+  "hnsw": [
+    {
+      "ef": 10,
+      "threads_1": {
+        "p50_us": 70.0,
+        "p95_us": 121.0,
+        "p99_us": 204.0,
+        "qps": 12470.0,
+        "recall_at_10": 0.939
+      },
+      "threads_2": {
+        "p50_us": 78.0,
+        "p95_us": 145.0,
+        "p99_us": 307.0,
+        "qps": 19148.0,
+        "recall_at_10": 0.939
+      }
+    },
+    {
+      "ef": 16,
+      "threads_1": {
+        "p50_us": 97.0,
+        "p95_us": 152.0,
+        "p99_us": 208.0,
+        "qps": 9366.0,
+        "recall_at_10": 0.9771
+      },
+      "threads_2": {
+        "p50_us": 140.0,
+        "p95_us": 205.0,
+        "p99_us": 234.0,
+        "qps": 12337.0,
+        "recall_at_10": 0.9771
+      }
+    },
+    {
+      "ef": 32,
+      "threads_1": {
+        "p50_us": 161.0,
+        "p95_us": 274.0,
+        "p99_us": 319.0,
+        "qps": 5485.0,
+        "recall_at_10": 0.9959
+      },
+      "threads_2": {
+        "p50_us": 174.0,
+        "p95_us": 290.0,
+        "p99_us": 382.0,
+        "qps": 9460.0,
+        "recall_at_10": 0.9959
+      }
+    },
+    {
+      "ef": 64,
+      "threads_1": {
+        "p50_us": 258.0,
+        "p95_us": 421.0,
+        "p99_us": 522.0,
+        "qps": 3571.0,
+        "recall_at_10": 0.9999
+      },
+      "threads_2": {
+        "p50_us": 249.0,
+        "p95_us": 311.0,
+        "p99_us": 383.0,
+        "qps": 7620.0,
+        "recall_at_10": 0.9999
+      }
+    },
+    {
+      "ef": 128,
+      "threads_1": {
+        "p50_us": 385.0,
+        "p95_us": 575.0,
+        "p99_us": 647.0,
+        "qps": 2400.0,
+        "recall_at_10": 1.0
+      },
+      "threads_2": {
+        "p50_us": 358.0,
+        "p95_us": 492.0,
+        "p99_us": 614.0,
+        "qps": 5345.0,
+        "recall_at_10": 1.0
+      }
+    },
+    {
+      "ef": 256,
+      "threads_1": {
+        "p50_us": 694.0,
+        "p95_us": 955.0,
+        "p99_us": 1269.0,
+        "qps": 1349.0,
+        "recall_at_10": 1.0
+      },
+      "threads_2": {
+        "p50_us": 698.0,
+        "p95_us": 942.0,
+        "p99_us": 1075.0,
+        "qps": 2580.0,
+        "recall_at_10": 1.0
+      }
+    }
+  ],
+  "memory": {
+    "graph_bytes": 22926536,
+    "graph_bytes_per_vector": 229,
+    "rss_before_build_bytes": 58916864,
+    "rss_bytes": 203112448,
+    "vector_bytes": 51200000,
+    "wal_bytes": 55790008
+  },
+  "pq": {
+    "code_and_codebook_bytes": 3331072,
+    "compression_vs_f32": 15.4,
+    "ksub": 256,
+    "m": 32,
+    "search_threads_1": [
+      {
+        "p50_us": 4693.0,
+        "p95_us": 6664.0,
+        "p99_us": 7995.0,
+        "qps": 202.0,
+        "recall_at_10": 0.6068,
+        "rerank": 1
+      },
+      {
+        "p50_us": 4703.0,
+        "p95_us": 7305.0,
+        "p99_us": 7801.0,
+        "qps": 198.0,
+        "recall_at_10": 0.9535,
+        "rerank": 4
+      },
+      {
+        "p50_us": 4858.0,
+        "p95_us": 5605.0,
+        "p99_us": 7225.0,
+        "qps": 201.0,
+        "recall_at_10": 0.9999,
+        "rerank": 16
+      }
+    ],
+    "train_sample": 50000,
+    "train_seconds": 50.92
+  },
+  "setup": {
+    "cpus": 4,
+    "dataset": "lowrank",
+    "dataset_description": "64-component Gaussian mixture in a 16-d latent space, random linear map to dim, noise 0.05",
+    "dim": 128,
+    "ef_construction": 200,
+    "kernel": "avx2+fma",
+    "m": 16,
+    "metric": "l2",
+    "n": 100000,
+    "queries": 1000,
+    "seed": 7,
+    "wal_sync": "never"
+  }
+}

@@ -1,0 +1,22 @@
+ 06:31:10 up 11 min,  0 user,  load average: 6.75, 7.19, 4.11
+     Running unittests src/lib.rs (target/release/deps/vectordb-ca0538b49a6f9f83)
+test result: ok. 17 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.87s
+     Running unittests src/bin/bench.rs (target/release/deps/vdb_bench-6366bb71b2512787)
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+     Running unittests src/main.rs (target/release/deps/vectordb-828f46726ce84bd3)
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+     Running tests/api.rs (target/release/deps/api-b582ae65fb5fd1cd)
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+     Running tests/audit.rs (target/release/deps/audit-12c59279636c6483)
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 13.37s
+     Running tests/audit_pq_rerank.rs (target/release/deps/audit_pq_rerank-4d6360d5d726090a)
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/collection.rs (target/release/deps/collection-3f5b06ec7804a56f)
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.70s
+     Running tests/wal_efbig.rs (target/release/deps/wal_efbig-7c6092b5b6b82d9e)
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/wal_faults.rs (target/release/deps/wal_faults-8a70671b49108a6f)
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+FMT_OK
+    Finished `release` profile [optimized + debuginfo] target(s) in 10.67s

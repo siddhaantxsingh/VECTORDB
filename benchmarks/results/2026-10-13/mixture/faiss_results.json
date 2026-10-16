@@ -1,0 +1,125 @@
+{
+  "setup": {
+    "faiss": "1.15.1",
+    "index": "IndexHNSWFlat",
+    "n": 100000,
+    "dim": 128,
+    "queries": 1000,
+    "m": 16,
+    "ef_construction": 200
+  },
+  "build_threads_1": {
+    "seconds": 40.75,
+    "inserts_per_sec": 2454
+  },
+  "hnsw": [
+    {
+      "ef": 10,
+      "threads_1_batched": {
+        "recall_at_10": 0.621,
+        "qps": 15468
+      },
+      "threads_2_batched": {
+        "recall_at_10": 0.621,
+        "qps": 30744
+      },
+      "threads_1_single_query": {
+        "recall_at_10": 0.621,
+        "qps": 11088,
+        "p50_us": 78,
+        "p95_us": 156,
+        "p99_us": 234
+      }
+    },
+    {
+      "ef": 16,
+      "threads_1_batched": {
+        "recall_at_10": 0.7435,
+        "qps": 11089
+      },
+      "threads_2_batched": {
+        "recall_at_10": 0.7435,
+        "qps": 21408
+      },
+      "threads_1_single_query": {
+        "recall_at_10": 0.7435,
+        "qps": 7575,
+        "p50_us": 118,
+        "p95_us": 207,
+        "p99_us": 283
+      }
+    },
+    {
+      "ef": 32,
+      "threads_1_batched": {
+        "recall_at_10": 0.8913,
+        "qps": 6575
+      },
+      "threads_2_batched": {
+        "recall_at_10": 0.8913,
+        "qps": 12149
+      },
+      "threads_1_single_query": {
+        "recall_at_10": 0.8913,
+        "qps": 5183,
+        "p50_us": 169,
+        "p95_us": 339,
+        "p99_us": 442
+      }
+    },
+    {
+      "ef": 64,
+      "threads_1_batched": {
+        "recall_at_10": 0.9734,
+        "qps": 3708
+      },
+      "threads_2_batched": {
+        "recall_at_10": 0.9734,
+        "qps": 8424
+      },
+      "threads_1_single_query": {
+        "recall_at_10": 0.9734,
+        "qps": 3738,
+        "p50_us": 245,
+        "p95_us": 370,
+        "p99_us": 649
+      }
+    },
+    {
+      "ef": 128,
+      "threads_1_batched": {
+        "recall_at_10": 0.9954,
+        "qps": 2723
+      },
+      "threads_2_batched": {
+        "recall_at_10": 0.9954,
+        "qps": 4701
+      },
+      "threads_1_single_query": {
+        "recall_at_10": 0.9954,
+        "qps": 2482,
+        "p50_us": 389,
+        "p95_us": 522,
+        "p99_us": 631
+      }
+    },
+    {
+      "ef": 256,
+      "threads_1_batched": {
+        "recall_at_10": 0.9992,
+        "qps": 1793
+      },
+      "threads_2_batched": {
+        "recall_at_10": 0.9992,
+        "qps": 2933
+      },
+      "threads_1_single_query": {
+        "recall_at_10": 0.9992,
+        "qps": 1813,
+        "p50_us": 536,
+        "p95_us": 689,
+        "p99_us": 827
+      }
+    }
+  ]
+}

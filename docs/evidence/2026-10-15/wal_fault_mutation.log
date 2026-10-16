@@ -1,0 +1,14 @@
+## mutation: rollback does not truncate (set_len removed)
+test efbig_during_append_loses_no_acknowledged_write ... FAILED
+thread 'efbig_during_append_loses_no_acknowledged_write' (17329) panicked at tests/wal_efbig.rs:60:9:
+   7: <fn() -> core::result::Result<(), alloc::string::String> as core::ops::function::FnOnce<()>>::call_once
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.38s
+test failed_rollback_after_fsync_error_poisons_until_restart ... ok
+test failed_rollback_after_short_write_is_repaired_on_restart ... ok
+test fsync_failure_rolls_back_the_record ... FAILED
+test short_write_failure_rolls_back_the_fragment ... FAILED
+thread 'fsync_failure_rolls_back_the_record' (17367) panicked at tests/wal_faults.rs:69:9:
+   8: <fn() -> core::result::Result<(), alloc::string::String> as core::ops::function::FnOnce<()>>::call_once
+thread 'short_write_failure_rolls_back_the_fragment' (17368) panicked at tests/wal_faults.rs:69:9:
+   8: <fn() -> core::result::Result<(), alloc::string::String> as core::ops::function::FnOnce<()>>::call_once
+test result: FAILED. 2 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.24s

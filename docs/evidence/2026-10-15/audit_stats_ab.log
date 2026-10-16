@@ -1,0 +1,8 @@
+== new round 1 load average: 10.34, 6.04, 2.48
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 23.69s
+== committed round 1 load average: 8.48, 6.58, 3.02
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 22.66s
+== new round 2 load average: 8.59, 7.19, 3.66
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 22.42s
+== committed round 2 load average: 8.97, 7.58, 4.11
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 21.60s

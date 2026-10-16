@@ -1,0 +1,30 @@
+syntax = "proto3";
+package vectordb.v1;
+
+// Metadata is passed as a JSON object string to keep the schema small and
+// identical to the REST API's metadata/filter model.
+message Point { uint64 id = 1; repeated float vector = 2; string metadata_json = 3; }
+message UpsertRequest { string collection = 1; repeated Point points = 2; }
+message UpsertResponse { uint64 lsn = 1; uint32 upserted = 2; }
+message DeleteRequest { string collection = 1; uint64 id = 2; }
+message DeleteResponse { bool deleted = 1; }
+message SearchRequest {
+  string collection = 1;
+  repeated float vector = 2;
+  uint32 k = 3;
+  uint32 ef = 4;            // 0 = default
+  string filter_json = 5;   // empty = no filter
+  string mode = 6;          // "hnsw" (default) | "exact" | "pq"
+  uint32 rerank = 7;
+}
+message Hit { uint64 id = 1; float distance = 2; string metadata_json = 3; }
+message SearchResponse { repeated Hit hits = 1; string plan = 2; uint64 micros = 3; }
+message StatsRequest { string collection = 1; }
+message StatsResponse { string stats_json = 1; }
+
+service VectorDb {
+  rpc Upsert(UpsertRequest) returns (UpsertResponse);
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+  rpc Search(SearchRequest) returns (SearchResponse);
+  rpc Stats(StatsRequest) returns (StatsResponse);
+}

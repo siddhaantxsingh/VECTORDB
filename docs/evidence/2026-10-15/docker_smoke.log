@@ -1,0 +1,10 @@
+Fri Oct 16 06:51:06 UTC 2026
+== image size: 155747062 bytes
+== user in container: uid=10001(vdb) gid=10001(vdb) groups=10001(vdb)
+{"dim":3,"metric":"cosine","live":0,"slots":0,"deleted_fraction":0.0,"lsn":0,"wal_bytes":8,"hnsw_max_level":0,"pq":null,"vector_bytes":0,"graph_bytes":0,"pq_bytes":0,"queries":0,"writes":0}
+{"lsn":2,"upserted":2}
+search: {"hits":[{"id":1,"distance":0.0061163306,"metadata":{"lang":"en"}}],"plan":"hnsw-filtered ef=128 (selectivity≈0.500)","micros":15}
+== restart (docker stop sends SIGTERM)
+after restart, point 2: {"id":2,"metadata":{"lang":"de"},"vector":[0.0,1.0,0.0]}
+PASS: docker smoke test
+exit: 0
